@@ -1,11 +1,12 @@
-#include "app/xml_parser.h"
+#include "app/app.h"
 #include <iostream>
 #include <exception>
 
 
 int main() {
 	try {
-		XmlParser::run();
+		XmlParser::App app;
+		app.run();
 	}
 	catch (std::exception e) {
 		std::cout << "An error occured: " << e.what() << std::endl;

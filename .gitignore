@@ -31,3 +31,4 @@
 *.out
 *.app
 /.vs/XmlParser/v17
+/x64/Debug
