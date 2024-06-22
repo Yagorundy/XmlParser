@@ -1,11 +1,12 @@
 #include "random_id.h"
 
 namespace XmlParser {
-	bool isInit = false;
+	/* Inspiration came from internet */
+	bool isInit_ = false;
 	unsigned int generateRandomId() {
-		if (!isInit) {
+		if (!isInit_) {
 			srand(time(NULL));
-			isInit = true;
+			isInit_ = true;
 		}
 		return rand();
 	}
