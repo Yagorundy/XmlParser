@@ -72,6 +72,15 @@
     <ClCompile Include="commands\xml\xml_set_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="commands\xml\xml_children_command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="commands\xml\xml_child_command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\number_helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app\app.h">
@@ -132,6 +141,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="commands\xml\xml_set_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commands\xml\xml_children_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commands\xml\xml_child_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\number_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

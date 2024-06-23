@@ -18,8 +18,9 @@ namespace XmlParser {
 		MyString value = args_[2];
 
 		ElementNode* el = state.elementNodeById[id];
-		if (el != nullptr) {
-			el->setAttribute(ElementNodeAttribute(key, value));
-		}
+		if (el == nullptr)
+			return;
+
+		el->setAttribute(ElementNodeAttribute(key, value));
 	}
 }

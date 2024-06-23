@@ -27,7 +27,7 @@ namespace XmlParser {
 		MyString getId() const;
 		void setId(const MyString& id);
 
-		const Vector<Node*> getChildren() const;
+		const Vector<Node*>& getChildren() const;
 		void addChild(Node* child);
 
 		void pipe(std::ostream& out, int ident) const override;

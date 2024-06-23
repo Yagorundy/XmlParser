@@ -59,7 +59,7 @@ namespace XmlParser {
 		setAttribute(ElementNodeAttribute("id", id), 0);
 	}
 
-	const Vector<Node*> ElementNode::getChildren() const {
+	const Vector<Node*>& ElementNode::getChildren() const {
 		return children_;
 	}
 

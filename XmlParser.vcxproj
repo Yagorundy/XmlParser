@@ -142,6 +142,8 @@
     <ClCompile Include="app\app_state.cpp" />
     <ClCompile Include="commands\file\file_close_command.cpp" />
     <ClCompile Include="commands\file\file_save_command.cpp" />
+    <ClCompile Include="commands\xml\xml_children_command.cpp" />
+    <ClCompile Include="commands\xml\xml_child_command.cpp" />
     <ClCompile Include="commands\xml\xml_select_command.cpp" />
     <ClCompile Include="commands\xml\xml_set_command.cpp" />
     <ClCompile Include="parsers\argument_parser.cpp" />
@@ -157,12 +159,15 @@
     <ClCompile Include="parsers\xml_parser.cpp" />
     <ClCompile Include="utils\app_exceptions.cpp" />
     <ClCompile Include="utils\MyString.cpp" />
+    <ClCompile Include="utils\number_helpers.cpp" />
     <ClCompile Include="utils\random_id.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app\app_state.h" />
     <ClInclude Include="commands\file\file_close_command.h" />
     <ClInclude Include="commands\file\file_save_command.h" />
+    <ClInclude Include="commands\xml\xml_children_command.h" />
+    <ClInclude Include="commands\xml\xml_child_command.h" />
     <ClInclude Include="commands\xml\xml_select_command.h" />
     <ClInclude Include="commands\xml\xml_set_command.h" />
     <ClInclude Include="parsers\argument_parser.h" />
@@ -177,6 +182,7 @@
     <ClInclude Include="parsers\xml_parser.h" />
     <ClInclude Include="utils\app_exceptions.h" />
     <ClInclude Include="utils\map.hpp" />
+    <ClInclude Include="utils\number_helpers.h" />
     <ClInclude Include="utils\vector.hpp" />
     <ClInclude Include="utils\MyString.h" />
     <ClInclude Include="utils\random_id.h" />

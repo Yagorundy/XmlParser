@@ -16,17 +16,17 @@ namespace XmlParser {
 	template <typename K, typename V>
 	class Map {
 	private:
-		Vector<MapEntry<K, V>> data_;
+		Vector<MapEntry<K, V>> entries_;
 
 		int indexOf(const K& key) const {
-			int l = 0, r = data_.getSize() - 1;
+			int l = 0, r = entries_.getSize() - 1;
 			while (l <= r) {
 				int m = l + (r - l) / 2;
 
-				if (data_[m].key == key)
+				if (entries_[m].key == key)
 					return m;
 
-				if (data_[m].key < key)
+				if (entries_[m].key < key)
 					l = m + 1;
 				else
 					r = m - 1;
@@ -35,18 +35,18 @@ namespace XmlParser {
 		}
 
 		int upperBound(const K& key) const {
-			int m, l = 0, r = data_.getSize();
+			int m, l = 0, r = entries_.getSize();
 
 			while (l < r) {
 				m = l + (r - l) / 2;
-				if (key >= data_[m].key) {
+				if (key >= entries_[m].key) {
 					l = m + 1;
 				}
 				else {
 					r = m;
 				}
 			}
-			if (l < data_.getSize() && data_[l].key <= key) {
+			if (l < entries_.getSize() && entries_[l].key <= key) {
 				l++;
 			}
 			return l;
@@ -54,6 +54,10 @@ namespace XmlParser {
 
 	public:
 		Map() { }
+
+		const Vector<MapEntry<K, V>>& getEntries() const {
+			return entries_;
+		}
 
 		bool contains(const K& key) const {
 			return indexOf(key) != -1;
@@ -65,14 +69,14 @@ namespace XmlParser {
 			}
 			else {
 				int index = upperBound(key);
-				data_.pushAt(MapEntry<K, V>(key, value), index);
+				entries_.pushAt(MapEntry<K, V>(key, value), index);
 			}
 		}
 
 		void remove(const K& key) {
 			int index = indexOf(key);
 			if (index != -1) {
-				data_.popAt(index);
+				entries_.popAt(index);
 			}
 		}
 
@@ -80,16 +84,16 @@ namespace XmlParser {
 			int index = indexOf(key);
 			if (index == -1)
 				throw ValidationException("Key not found");
-			return data_[index].value;
+			return entries_[index].value;
 		}
 
 		V& operator[](const K& key) {
 			int index = indexOf(key);
 			if (index == -1) {
 				index = upperBound(key);
-				data_.pushAt(MapEntry<K, V>(key, V()), index);
+				entries_.pushAt(MapEntry<K, V>(key, V()), index);
 			}
-			return data_[index].value;
+			return entries_[index].value;
 		}
 	};
 }
