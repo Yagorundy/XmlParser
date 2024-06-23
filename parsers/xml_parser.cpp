@@ -18,9 +18,9 @@ namespace XmlParser {
 	ElementNode* XmlParser::parseElement(std::istream& file, const MyString& openingTagContent) {
 		//std::cout << "openingTagContent: " << openingTagContent << std::endl;
 
-		// !NOTE - opening tag content can be parsed just like a command
-		CommandParser commandParser;
-		Vector<MyString> args = commandParser.parseArgs(openingTagContent);
+		// !NOTE - opening tag content can be parsed just like command line arguments
+		ArgumentParser argsParser;
+		Vector<MyString> args = argsParser.parse(openingTagContent);
 
 		MyString tag = args[0];
 		args.popFront();

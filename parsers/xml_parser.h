@@ -7,8 +7,9 @@
 #include "../utils/MyString.h"
 #include "../utils/vector.hpp"
 #include "../utils/app_exceptions.h"
-#include "command_parser.h"
+#include "argument_parser.h"
 #include "../utils/random_id.h"
+#include "../utils/map.hpp"
 
 namespace XmlParser {
     class XmlParser {

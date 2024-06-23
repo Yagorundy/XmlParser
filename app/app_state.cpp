@@ -4,11 +4,14 @@ namespace XmlParser {
 	void AppState::copyFrom(const AppState& other) {
 		filePath = other.filePath;
 		rootNode = dynamic_cast<ElementNode*>(other.rootNode->clone());
-		// TODO: fix
-		elementNodeById = other.elementNodeById;
+
+		XmlParser xmlParser;
+		xmlParser.assignUniqueIdsAndFillMap(elementNodeById, rootNode);
 	}
-	void AppState::free() {
+	void AppState::clear() {
+		filePath = MyString();
 		delete rootNode;
+		elementNodeById = Map<MyString, ElementNode*>();
 	}
 
 	AppState::AppState(): rootNode(nullptr) { }
@@ -20,14 +23,14 @@ namespace XmlParser {
 	AppState& AppState::operator=(const AppState& other) {
 		if (this != &other)
 		{
-			free();
+			clear();
 			copyFrom(other);
 		}
 		return *this;
 	}
 
 	AppState::~AppState() {
-		free();
+		clear();
 	}
 
 	const bool& AppState::hasOpenedFile() const {

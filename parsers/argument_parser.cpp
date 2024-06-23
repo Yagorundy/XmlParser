@@ -1,7 +1,7 @@
-#include "command_parser.h"
+#include "argument_parser.h"
 
 namespace XmlParser {
-	Vector<MyString> CommandParser::parseArgs(const MyString& input) {
+	Vector<MyString> ArgumentParser::parse(const MyString& input) {
 		Vector<MyString> args;
 		int l = 0;
 		int n = input.getSize();
@@ -51,16 +51,5 @@ namespace XmlParser {
 		//std::cout << std::endl;
 
 		return args;
-	}
-
-	Command* CommandParser::parseCommand(const MyString& input) {
-		Vector<MyString> args = parseArgs(input);
-		if (args.getSize() == 0) return nullptr;
-
-		MyString name = args[0];
-		args.popFront();
-
-		auto command = Command::create(name, args);
-		return command;
 	}
 }

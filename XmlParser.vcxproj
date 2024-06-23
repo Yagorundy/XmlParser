@@ -140,7 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="app\app_state.cpp" />
-    <ClCompile Include="parsers\command_parser.cpp" />
+    <ClCompile Include="commands\file\file_close_command.cpp" />
+    <ClCompile Include="commands\file\file_save_command.cpp" />
+    <ClCompile Include="parsers\argument_parser.cpp" />
     <ClCompile Include="commands\command.cpp" />
     <ClCompile Include="commands\file\file_open_command.cpp" />
     <ClCompile Include="commands\xml\xml_print_command.cpp" />
@@ -157,7 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app\app_state.h" />
-    <ClInclude Include="parsers\command_parser.h" />
+    <ClInclude Include="commands\file\file_close_command.h" />
+    <ClInclude Include="commands\file\file_save_command.h" />
+    <ClInclude Include="parsers\argument_parser.h" />
     <ClInclude Include="commands\command.h" />
     <ClInclude Include="commands\file\file_open_command.h" />
     <ClInclude Include="commands\xml\xml_print_command.h" />
