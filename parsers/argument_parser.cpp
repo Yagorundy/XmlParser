@@ -46,7 +46,7 @@ namespace XmlParser {
 
 		//std::cout << "command parser: ";
 		//for (int i = 0; i < args.getSize(); i++) {
-		//    std::cout << args[i] << ' ';
+		//    std::cout << '{' << args[i] << '}' << ' ';
 		//}
 		//std::cout << std::endl;
 

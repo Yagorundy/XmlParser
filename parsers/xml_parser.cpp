@@ -69,8 +69,27 @@ namespace XmlParser {
 
 	ElementNodeAttribute XmlParser::parseAttribute(const MyString& attribute) {
 		int eqIndex = attribute.find('=', 0);
-		MyString name = attribute.substr(0, eqIndex);
-		MyString value = attribute.substr(eqIndex + 2, attribute.getSize() - eqIndex - 5);
+		if (eqIndex == -1) {
+			throw ValidationException("Invalid attribute format: no '=' found");
+		}
+
+		MyString name = attribute.substr(0, eqIndex).trim();
+		if (name.empty()) {
+			throw ValidationException("Invalid attribute format: empty attribute name");
+		}
+
+		char quoteChar = attribute[eqIndex + 1];
+		if (quoteChar != '"' && quoteChar != '\'') {
+			throw ValidationException("Invalid attribute format: no opening quote for attribute value");
+		}
+
+		int valueStart = eqIndex + 2;
+		int valueEnd = attribute.find(quoteChar, valueStart);
+		if (valueEnd == -1) {
+			throw ValidationException("Invalid attribute format: no closing quote for attribute value");
+		}
+
+		MyString value = attribute.substr(valueStart, valueEnd - valueStart).trim();
 		return ElementNodeAttribute(name, value);
 	}
 
