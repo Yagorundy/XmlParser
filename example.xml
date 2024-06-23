@@ -1,13 +1,13 @@
-<persons id="3234">
+<persons id="4505">
 	<person id="0">
-		<name id="70261">John Smith<name/>
-		<address id="00022" type="home">Brooklyn, NY<address/>
+		<name id="68713">John Smith</name>
+		<address id="97852" type="home">Brooklyn, NY</address>
 		braaat
-		<address id="13572" type="work">Manhattan, NYC<address/>
-		<occupation id="0738">dentist<occupation/>
+		<address id="39901" type="work">Manhattan, NYC</address>
+		<occupation id="57052">dentist</occupation>
 	</person>
-	<person id="0_73522">
-		<name id="59271">Ivan Petrov<name/>
-		<address id="68091">Bulgaria<address/>
+	<person id="0_88371">
+		<name id="65362">Ivan Petrov</name>
+		<address id="63781">Bulgaria</address>
 	</person>
 </persons>

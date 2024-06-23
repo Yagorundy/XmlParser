@@ -15,18 +15,6 @@ namespace XmlParser {
 		return new ElementNode(*this);
 	}
 
-	void ElementNode::addAttribute(const ElementNodeAttribute& attribute) {
-		attributes_.pushBack(attribute);
-	}
-
-	void ElementNode::addAttribute(const MyString& name, const MyString& value) {
-		addAttribute(ElementNodeAttribute(name, value));
-	}
-
-	void ElementNode::addChild(Node* child) {
-		children_.pushBack(child);
-	}
-
 	const MyString& ElementNode::getTag() const {
 		return tag_;
 	}
@@ -35,32 +23,48 @@ namespace XmlParser {
 		return attributes_;
 	}
 
-	const Vector<Node*> ElementNode::getChildren() const {
-		return children_;
-	}
-
-	MyString ElementNode::getId() const {
+	MyString ElementNode::getAttributeValue(const MyString& name) const {
 		for (int i = 0; i < attributes_.getSize(); i++) {
-			if (attributes_[i].getName() == "id") {
+			if (attributes_[i].getName() == name) {
 				return attributes_[i].getValue();
 			}
 		}
 		return MyString();
 	}
 
-	void ElementNode::setId(const MyString& id) {
+	void ElementNode::setAttribute(const ElementNodeAttribute& attribute, const int& pos) {
 		int i = 0;
 		for (; i < attributes_.getSize(); i++) {
-			if (attributes_[i].getName() == "id") {
+			if (attributes_[i].getName() == attribute.getName()) {
 				break;
 			}
 		}
 		if (i >= attributes_.getSize()) {
-			attributes_.pushAt(ElementNodeAttribute("id", id), 0);
+			attributes_.pushAt(attribute, pos);
 		}
 		else {
-			attributes_[i].setValue(id);
+			attributes_[i].setValue(attribute.getValue());
 		}
+	}
+
+	void ElementNode::setAttribute(const ElementNodeAttribute& attribute) {
+		setAttribute(attribute, attributes_.getSize());
+	}
+
+	MyString ElementNode::getId() const {
+		return getAttributeValue("id");
+	}
+
+	void ElementNode::setId(const MyString& id) {
+		setAttribute(ElementNodeAttribute("id", id), 0);
+	}
+
+	const Vector<Node*> ElementNode::getChildren() const {
+		return children_;
+	}
+
+	void ElementNode::addChild(Node* child) {
+		children_.pushBack(child);
 	}
 
 	void ElementNode::pipe(std::ostream& out, int ident) const {
