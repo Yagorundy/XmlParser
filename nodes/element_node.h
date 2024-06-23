@@ -18,10 +18,14 @@ namespace XmlParser {
 
 		const MyString& getTag() const;
 		void addAttribute(const ElementNodeAttribute& attribute);
+		void addAttribute(const MyString& name, const MyString& value);
 		void addChild(Node* child);
 		
 		const Vector<ElementNodeAttribute>& getAttributes() const;
 		const Vector<Node*> getChildren() const;
+		
+		MyString getId() const;
+		void setId(const MyString& id);
 
 		void pipe(std::ostream& out, int ident) const override;
 	};

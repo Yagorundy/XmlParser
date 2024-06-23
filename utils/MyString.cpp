@@ -243,7 +243,7 @@ MyString MyString::trim() const {
 	size_t end = _size - 1;
 	while (isspace(_data[end]) && end > start) end--;
 
-	return substr(start, end + 1);
+	return substr(start, end - start + 1);
 }
 
 MyString operator+(const MyString& lhs, const MyString& rhs)

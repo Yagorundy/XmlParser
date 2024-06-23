@@ -37,6 +37,10 @@ namespace XmlParser {
         return value_;
     }
 
+    void ElementNodeAttribute::setValue(const MyString& value) {
+        value_ = value;
+    }
+
     void ElementNodeAttribute::pipe(std::ostream& out) const {
         out << name_ << '=' << '"' << value_ << '"';
     }

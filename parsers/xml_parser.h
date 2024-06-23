@@ -8,11 +8,13 @@
 #include "../utils/vector.hpp"
 #include "../utils/app_exceptions.h"
 #include "command_parser.h"
+#include "../utils/random_id.h"
 
 namespace XmlParser {
     class XmlParser {
     public:
         ElementNode* parse(std::istream& is);
+        void assignUniqueIdsAndFillMap(Map<MyString, ElementNode*>& elementNodeById, ElementNode* node);
 
     private:
         ElementNode* parseElement(std::istream& in, const MyString& tag);

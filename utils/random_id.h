@@ -2,7 +2,9 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include "MyString.h"
 
 namespace XmlParser {
-	unsigned int generateRandomId();
+	unsigned int generateRandomNumber();
+	MyString generateRandomId();
 }

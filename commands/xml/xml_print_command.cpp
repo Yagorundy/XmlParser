@@ -12,6 +12,6 @@ namespace XmlParser {
 
 	void XmlPrintCommand::exec(AppState& state) {
 		assertFileOpened(state);
-		state.getRootNode()->pipe(std::cout, 0);
+		state.rootNode->pipe(std::cout, 0);
 	}
 }

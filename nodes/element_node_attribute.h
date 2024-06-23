@@ -16,7 +16,9 @@ namespace XmlParser {
         ElementNodeAttribute& operator=(ElementNodeAttribute&& other) noexcept;
 
         const MyString& getName() const;
+
         const MyString& getValue() const;
+        void setValue(const MyString& value);
 
         void pipe(std::ostream& out) const;
     };

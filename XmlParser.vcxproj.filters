@@ -107,6 +107,9 @@
     <ClInclude Include="parsers\xml_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="utils\map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="example.xml" />

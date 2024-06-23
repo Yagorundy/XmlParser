@@ -30,10 +30,11 @@ namespace XmlParser {
 			element->addAttribute(parseAttribute(args[i]));
 		}
 
+		// parse element content
 		while (file.good()) {
 			MyString text = readUntil(file, '<');
 			text = text.trim();
-			std::cout << "Found text with length " << text.getSize() << ": " << text << std::endl;
+			//std::cout << "Found text with length " << text.getSize() << ": " << text << std::endl;
 			if (!text.empty()) {
 				element->addChild(new TextNode(text));
 			}
@@ -83,6 +84,32 @@ namespace XmlParser {
 			result += ch;
 		}
 		return result;
+	}
+
+	void XmlParser::assignUniqueIdsAndFillMap(Map<MyString, ElementNode*>& elementNodeById, ElementNode* node) {
+		MyString id = node->getId();
+		if (id.empty()) {
+			do {
+				id = generateRandomId();
+			} while (elementNodeById.contains(id));
+		}
+		else if (elementNodeById.contains(id)) {
+			MyString extendedId;
+			do {
+				extendedId = id + "_" + generateRandomId();
+			} while (elementNodeById.contains(extendedId));
+			id = extendedId;
+		}
+		
+		node->setId(id);
+		elementNodeById.set(id, node);
+
+		for (int i = 0; i < node->getChildren().getSize(); i++) {
+			ElementNode* elementNodeChild = dynamic_cast<ElementNode*>(node->getChildren()[i]);
+			if (elementNodeChild != nullptr) {
+				assignUniqueIdsAndFillMap(elementNodeById, elementNodeChild);
+			}
+		}
 	}
 
 }

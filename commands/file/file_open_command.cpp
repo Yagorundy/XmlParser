@@ -23,8 +23,12 @@ namespace XmlParser {
             XmlParser xmlParser;
             ElementNode* rootNode = xmlParser.parse(file);
 
-            state.setFilePath(path);
-            state.setRootNode(rootNode);
+            Map<MyString, ElementNode*> elementNodeById;
+            xmlParser.assignUniqueIdsAndFillMap(elementNodeById, rootNode);
+
+            state.filePath = path;
+            state.rootNode = rootNode;
+            state.elementNodeById = elementNodeById;
         }
         catch (...) {
             file.close();

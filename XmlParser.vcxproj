@@ -168,6 +168,7 @@
     <ClInclude Include="app\app.h" />
     <ClInclude Include="parsers\xml_parser.h" />
     <ClInclude Include="utils\app_exceptions.h" />
+    <ClInclude Include="utils\map.hpp" />
     <ClInclude Include="utils\vector.hpp" />
     <ClInclude Include="utils\MyString.h" />
     <ClInclude Include="utils\random_id.h" />
