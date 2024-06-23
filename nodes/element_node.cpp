@@ -10,9 +10,12 @@ namespace XmlParser {
 			delete children_[i];
 	}
 
-	// TODO: fix
 	Node* ElementNode::clone() const {
-		return new ElementNode(*this);
+		ElementNode* node = new ElementNode(*this);
+		for (int i = 0; i < children_.getSize(); i++) {
+			node->children_[i] = node->children_[i]->clone();
+		}
+		return node;
 	}
 
 	const MyString& ElementNode::getTag() const {

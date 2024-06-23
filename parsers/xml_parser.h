@@ -18,7 +18,7 @@ namespace XmlParser {
         void assignUniqueIdsAndFillMap(Map<MyString, ElementNode*>& elementNodeById, ElementNode* node);
 
     private:
-        ElementNode* parseElement(std::istream& in, const MyString& tag);
+        ElementNode* parseElement(std::istream& in, const MyString& tag, bool isRoot);
         ElementNodeAttribute parseAttribute(const MyString& attribute);
         MyString readUntil(std::istream& is, char delimiter);
     };

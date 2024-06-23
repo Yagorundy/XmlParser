@@ -20,6 +20,10 @@ namespace XmlParser {
 		if (el == nullptr)
 			return;
 
-		el->addChild(new ElementNode(tag));
+		ElementNode* child = new ElementNode(tag);
+		child->setId(generateRandomId());
+
+		el->addChild(child);
+		state.elementNodeById[el->getId()] = el;
 	}
 }

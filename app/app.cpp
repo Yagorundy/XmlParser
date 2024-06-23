@@ -18,8 +18,13 @@ namespace XmlParser {
 
 				args.popFront();
 				Command* command = Command::create(name, args);
-				command->exec(state_);
-				delete command;
+				try {
+					command->exec(state_);
+				}
+				catch (...) {
+					delete command;
+					throw;
+				}
 			}
 			catch (ValidationException ex) {
 				std::cout << ex.what() << '\n';

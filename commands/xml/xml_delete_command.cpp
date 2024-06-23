@@ -21,5 +21,8 @@ namespace XmlParser {
 			return;
 
 		el->removeAttribute(key);
+		if (key == "id") {
+			state.elementNodeById.remove(id);
+		}
 	}
 }

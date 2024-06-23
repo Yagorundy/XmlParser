@@ -22,5 +22,9 @@ namespace XmlParser {
 			return;
 
 		el->setAttribute(ElementNodeAttribute(key, value));
+		if (key == "id") {
+			state.elementNodeById.remove(id);
+			state.elementNodeById[value] = el;
+		}
 	}
 }

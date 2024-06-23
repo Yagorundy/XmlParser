@@ -12,10 +12,10 @@ namespace XmlParser {
 			throw ValidationException("Invalid XML format: Empty tag.");
 		}
 
-		return parseElement(in, rootTagContent);
+		return parseElement(in, rootTagContent, true);
 	}
 
-	ElementNode* XmlParser::parseElement(std::istream& file, const MyString& openingTagContent) {
+	ElementNode* XmlParser::parseElement(std::istream& file, const MyString& openingTagContent, bool isRoot) {
 		//std::cout << "openingTagContent: " << openingTagContent << std::endl;
 
 		// !NOTE - opening tag content can be parsed just like command line arguments
@@ -24,47 +24,55 @@ namespace XmlParser {
 
 		MyString tag = args[0];
 		args.popFront();
+
 		ElementNode* element = new ElementNode(tag);
 
-		for (int i = 0; i < args.getSize(); i++) {
-			element->setAttribute(parseAttribute(args[i]));
-		}
-
-		// parse element content
-		while (file.good()) {
-			MyString text = readUntil(file, '<');
-			text = text.trim();
-			//std::cout << "Found text with length " << text.getSize() << ": " << text << std::endl;
-			if (!text.empty()) {
-				element->addChild(new TextNode(text));
+		try {
+			for (int i = 0; i < args.getSize(); i++) {
+				element->setAttribute(parseAttribute(args[i]));
 			}
 
-			// closing tag
-			if (file.peek() == '/') {
-				file.seekg(1, std::ios::cur);
-
-				MyString closingTag = readUntil(file, '>');
-				closingTag = closingTag.trim();
-
-				if (closingTag != tag) {
-					delete element;
-					throw ValidationException((MyString("Mismatched closing tag: ") + closingTag).c_str());
-				}
-				break;
-			}
-			// nested element
-			else {
-				MyString nestedTagContent = readUntil(file, '>');
-				nestedTagContent = nestedTagContent.trim(); // Remove leading and trailing whitespace
-				if (nestedTagContent.empty()) {
-					throw ValidationException("Invalid XML format: Empty tag.");
+			// parse element content
+			while (file.good()) {
+				MyString text = readUntil(file, '<');
+				text = text.trim();
+				//std::cout << "Found text with length " << text.getSize() << ": " << text << std::endl;
+				if (!text.empty()) {
+					element->addChild(new TextNode(text));
 				}
 
-				element->addChild(parseElement(file, nestedTagContent));
-			}
-		}
+				// closing tag
+				if (file.peek() == '/') {
+					file.seekg(1, std::ios::cur);
 
-		return element;
+					MyString closingTag = readUntil(file, '>');
+					closingTag = closingTag.trim();
+
+					if (closingTag != tag) {
+						delete element;
+						throw ValidationException((MyString("Mismatched closing tag: ") + closingTag).c_str());
+					}
+					break;
+				}
+				// nested element
+				else {
+					MyString nestedTagContent = readUntil(file, '>');
+					nestedTagContent = nestedTagContent.trim(); // Remove leading and trailing whitespace
+					if (nestedTagContent.empty()) {
+						throw ValidationException("Invalid XML format: Empty tag.");
+					}
+
+					element->addChild(parseElement(file, nestedTagContent, false));
+				}
+			}
+
+			return element;
+		}
+		catch (...) {
+			if (isRoot)
+				delete element;
+			throw;
+		}
 	}
 
 	ElementNodeAttribute XmlParser::parseAttribute(const MyString& attribute) {
@@ -119,7 +127,7 @@ namespace XmlParser {
 			} while (elementNodeById.contains(extendedId));
 			id = extendedId;
 		}
-		
+
 		node->setId(id);
 		elementNodeById.set(id, node);
 
