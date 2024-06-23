@@ -1,9 +1,9 @@
 #include "xml_print_command.h"
 
 namespace XmlParser {
-	const String XmlPrintCommand::kName = "print";
+	const MyString XmlPrintCommand::kName = "print";
 
-	XmlPrintCommand::XmlPrintCommand(Vector<String> args)
+	XmlPrintCommand::XmlPrintCommand(Vector<MyString> args)
 		: Command(args)
 	{
 		if (args.getSize() != 0)
@@ -12,6 +12,6 @@ namespace XmlParser {
 
 	void XmlPrintCommand::exec(AppState& state) {
 		assertFileOpened(state);
-		state.getRootNode()->pipe(std::cout);
+		state.getRootNode()->pipe(std::cout, 0);
 	}
 }

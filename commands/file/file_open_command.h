@@ -1,15 +1,15 @@
 #pragma once
 
+#include <fstream>
 #include "../command.h"
-#include "../../utils/string.h"
-#include "../../app/app_state.h"
+#include "../../parsers/xml_parser.h"
 
 namespace XmlParser {
     class FileOpenCommand : public Command {
     public:
-        static const String kName;
+        static const MyString kName;
 
-        FileOpenCommand(Vector<String> args);
+        FileOpenCommand(Vector<MyString> args);
 
         virtual void exec(AppState& state);
     };

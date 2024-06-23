@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../utils/string.h";
+#include "../utils/MyString.h";
 #include "../nodes/element_node.h"
 #include "../utils/app_exceptions.h"
 
 namespace XmlParser {
 	class AppState {
-		String filePath_;
+		MyString filePath_;
 		ElementNode* rootNode_;
 
 		void copyFrom(const AppState& other);
@@ -18,8 +18,12 @@ namespace XmlParser {
 		AppState& operator=(const AppState& other);
 		~AppState();
 
-		String& getFilePath();
-		ElementNode* getRootNode();
+		MyString getFilePath() const;
+		void setFilePath(const MyString& path);
+
+		ElementNode* getRootNode() const;
+		void setRootNode(ElementNode* node);
+
 		const bool& hasOpenedFile() const;
 	};
 }

@@ -1,10 +1,11 @@
 #include "element_node_attribute.h"
 
 namespace XmlParser {
-    ElementNodeAttribute::ElementNodeAttribute() : name_(""), value_("") {}
+    ElementNodeAttribute::ElementNodeAttribute() { }
 
-    ElementNodeAttribute::ElementNodeAttribute(const String& name, const String& value)
-        : name_(name), value_(value) {}
+    ElementNodeAttribute::ElementNodeAttribute(const MyString& name, const MyString& value)
+        : name_(name), value_(value)
+    { }
 
     ElementNodeAttribute::ElementNodeAttribute(const ElementNodeAttribute& other)
         : name_(other.name_), value_(other.value_) {}
@@ -28,11 +29,11 @@ namespace XmlParser {
         return *this;
     }
 
-    const String& ElementNodeAttribute::getName() const {
+    const MyString& ElementNodeAttribute::getName() const {
         return name_;
     }
 
-    const String& ElementNodeAttribute::getValue() const {
+    const MyString& ElementNodeAttribute::getValue() const {
         return value_;
     }
 

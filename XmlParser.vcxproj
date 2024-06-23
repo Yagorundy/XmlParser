@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="app\app_state.cpp" />
-    <ClCompile Include="app\command_parser.cpp" />
+    <ClCompile Include="parsers\command_parser.cpp" />
     <ClCompile Include="commands\command.cpp" />
     <ClCompile Include="commands\file\file_open_command.cpp" />
     <ClCompile Include="commands\xml\xml_print_command.cpp" />
@@ -150,13 +150,14 @@
     <ClCompile Include="nodes\node.cpp" />
     <ClCompile Include="nodes\text_node.cpp" />
     <ClCompile Include="app\app.cpp" />
+    <ClCompile Include="parsers\xml_parser.cpp" />
     <ClCompile Include="utils\app_exceptions.cpp" />
-    <ClCompile Include="utils\string.cpp" />
+    <ClCompile Include="utils\MyString.cpp" />
     <ClCompile Include="utils\random_id.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app\app_state.h" />
-    <ClInclude Include="app\command_parser.h" />
+    <ClInclude Include="parsers\command_parser.h" />
     <ClInclude Include="commands\command.h" />
     <ClInclude Include="commands\file\file_open_command.h" />
     <ClInclude Include="commands\xml\xml_print_command.h" />
@@ -165,10 +166,14 @@
     <ClInclude Include="nodes\node.h" />
     <ClInclude Include="nodes\text_node.h" />
     <ClInclude Include="app\app.h" />
+    <ClInclude Include="parsers\xml_parser.h" />
     <ClInclude Include="utils\app_exceptions.h" />
     <ClInclude Include="utils\vector.hpp" />
-    <ClInclude Include="utils\string.h" />
+    <ClInclude Include="utils\MyString.h" />
     <ClInclude Include="utils\random_id.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="example.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

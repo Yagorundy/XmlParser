@@ -1,15 +1,13 @@
 #pragma once
 
 #include "../command.h"
-#include "../../utils/string.h"
-#include "../../app/app_state.h"
 
 namespace XmlParser {
     class XmlPrintCommand : public Command {
     public:
-        static const String kName;
+        static const MyString kName;
 
-        XmlPrintCommand(Vector<String> args);
+        XmlPrintCommand(Vector<MyString> args);
 
         void exec(AppState& state) override;
     };

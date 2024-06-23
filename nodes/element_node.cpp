@@ -1,7 +1,7 @@
 #include "element_node.h"
 
 namespace XmlParser {
-	ElementNode::ElementNode(const String& tag)
+	ElementNode::ElementNode(const MyString& tag)
 		: tag_(tag)
 	{ }
 
@@ -18,15 +18,15 @@ namespace XmlParser {
 		attributes_.pushBack(attribute);
 	}
 
-	void ElementNode::addChild(const Node* child) {
-		//children_.pushBack(child.clone());
+	void ElementNode::addChild(Node* child) {
+		children_.pushBack(child);
 	}
 
-	const String& ElementNode::getTag() const {
+	const MyString& ElementNode::getTag() const {
 		return tag_;
 	}
 
-	const Vector<ElementNodeAttribute>&  ElementNode::getAttributes() const {
+	const Vector<ElementNodeAttribute>& ElementNode::getAttributes() const {
 		return attributes_;
 	}
 
@@ -34,18 +34,28 @@ namespace XmlParser {
 		return children_;
 	}
 
-	void ElementNode::pipe(std::ostream& out) const {
-		out << '<' << tag_ << ' ';
+	void ElementNode::pipe(std::ostream& out, int ident) const {
+		pipeIdent(out, ident);
+		out << '<' << tag_;
 		for (int i = 0; i < attributes_.getSize(); i++) {
+			out << ' ';
 			attributes_[i].pipe(out);
-			if (i != attributes_.getSize() - 1)
-				out << ' ';
 		}
 		out << '>';
 
-		for (int i = 0; i < children_.getSize(); i++) {
-			children_[i]->pipe(out);
+		if (children_.getSize() == 1 && dynamic_cast<TextNode*>(children_[0]) != nullptr) {
+			children_[0]->pipe(out, 0);
+			out << '<' << tag_ << "/>";
 		}
-		out << '<' << tag_ << "/>";
+		else {
+			out << std::endl;
+			for (int i = 0; i < children_.getSize(); i++) {
+				children_[i]->pipe(out, ident + 1);
+			}
+			pipeIdent(out, ident);
+			out << '<' << tag_ << "/>";
+
+		}
+		out << std::endl;
 	}
 }

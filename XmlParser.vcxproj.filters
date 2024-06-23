@@ -33,7 +33,7 @@
     <ClCompile Include="commands\xml\xml_print_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="app\command_parser.cpp">
+    <ClCompile Include="parsers\command_parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="commands\file\file_open_command.cpp">
@@ -51,10 +51,13 @@
     <ClCompile Include="utils\app_exceptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utils\string.cpp">
+    <ClCompile Include="utils\MyString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="nodes\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="parsers\xml_parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,7 +77,7 @@
     <ClInclude Include="commands\xml\xml_print_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="app\command_parser.h">
+    <ClInclude Include="parsers\command_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="commands\file\file_open_command.h">
@@ -92,7 +95,7 @@
     <ClInclude Include="utils\app_exceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utils\string.h">
+    <ClInclude Include="utils\MyString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\vector.hpp">
@@ -101,5 +104,11 @@
     <ClInclude Include="nodes\node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="parsers\xml_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="example.xml" />
   </ItemGroup>
 </Project>

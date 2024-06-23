@@ -28,12 +28,21 @@ namespace XmlParser {
 		free();
 	}
 
-	String& AppState::getFilePath() {
+	MyString AppState::getFilePath() const {
 		return filePath_;
 	}
 
-	ElementNode* AppState::getRootNode() {
+	void AppState::setFilePath(const MyString& path) {
+		filePath_ = path;
+	}
+
+	ElementNode* AppState::getRootNode() const {
 		return rootNode_;
+	}
+
+	void AppState::setRootNode(ElementNode* node) {
+		delete rootNode_;
+		rootNode_ = node;
 	}
 
 	const bool& AppState::hasOpenedFile() const {

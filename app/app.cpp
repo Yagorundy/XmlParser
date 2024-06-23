@@ -6,7 +6,7 @@ namespace XmlParser {
 		CommandParser command_parser;
 		while (true) {
 			try {
-				String input;
+				MyString input;
 				input.getLine(std::cin);
 
 				Command* command = command_parser.parseCommand(input);

@@ -3,11 +3,11 @@
 #include "xml/xml_print_command.h"
 
 namespace XmlParser {
-    Command::Command(Vector<String> args)
+    Command::Command(Vector<MyString> args)
         : args_(args)
     { }
 
-    Command* Command::create(const String& name, const Vector<String>& args) {
+    Command* Command::create(const MyString& name, const Vector<MyString>& args) {
         if (name == FileOpenCommand::kName)
             return new FileOpenCommand(args);
         if (name == XmlPrintCommand::kName)
