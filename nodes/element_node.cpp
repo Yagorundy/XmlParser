@@ -9,7 +9,7 @@ namespace XmlParser {
 		for (int i = 0; i < children_.getSize(); i++)
 			delete children_[i];
 	}
-	
+
 	// TODO: fix
 	Node* ElementNode::clone() const {
 		return new ElementNode(*this);
@@ -85,7 +85,7 @@ namespace XmlParser {
 				}
 			}
 			pipeIdent(out, ident);
-			out << '<' << tag_ << "/>";
+			out << "</" << tag_ << '>';
 
 		}
 		out << std::endl;
