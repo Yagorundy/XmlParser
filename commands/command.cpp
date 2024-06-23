@@ -8,6 +8,7 @@
 #include "xml/xml_children_command.h"
 #include "xml/xml_child_command.h"
 #include "xml/xml_text_command.h"
+#include "xml/xml_delete_command.h"
 
 namespace XmlParser {
     Command::Command(Vector<MyString> args)
@@ -33,6 +34,8 @@ namespace XmlParser {
             return new XmlChildCommand(args);
         if (name == XmlTextCommand::kName)
             return new XmlTextCommand(args);
+        if (name == XmlDeleteCommand::kName)
+            return new XmlDeleteCommand(args);
         throw ValidationException("Unrecognized command!");
     }
 

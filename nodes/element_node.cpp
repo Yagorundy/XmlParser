@@ -51,6 +51,15 @@ namespace XmlParser {
 		setAttribute(attribute, attributes_.getSize());
 	}
 
+	void ElementNode::removeAttribute(const const MyString& name) {
+		for (int i = 0; i < attributes_.getSize(); i++) {
+			if (attributes_[i].getName() == name) {
+				attributes_.popAt(i);
+				return;
+			}
+		}
+	}
+
 	MyString ElementNode::getId() const {
 		return getAttributeValue("id");
 	}

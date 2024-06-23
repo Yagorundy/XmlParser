@@ -15,6 +15,7 @@ namespace XmlParser {
 
 		MyString filePath;
 		ElementNode* rootNode;
+		// TODO: update properly when altering id attributes
 		Map<MyString, ElementNode*> elementNodeById;
 		
 		AppState();

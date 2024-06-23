@@ -23,6 +23,7 @@ namespace XmlParser {
 		const Vector<ElementNodeAttribute>& getAttributes() const;
 		MyString getAttributeValue(const MyString& name) const;
 		void setAttribute(const ElementNodeAttribute& attribute);
+		void removeAttribute(const const MyString& name);
 
 		MyString getId() const;
 		void setId(const MyString& id);

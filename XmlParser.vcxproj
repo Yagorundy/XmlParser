@@ -144,6 +144,7 @@
     <ClCompile Include="commands\file\file_save_command.cpp" />
     <ClCompile Include="commands\xml\xml_children_command.cpp" />
     <ClCompile Include="commands\xml\xml_child_command.cpp" />
+    <ClCompile Include="commands\xml\xml_delete_command.cpp" />
     <ClCompile Include="commands\xml\xml_select_command.cpp" />
     <ClCompile Include="commands\xml\xml_set_command.cpp" />
     <ClCompile Include="commands\xml\xml_text_command.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="commands\file\file_save_command.h" />
     <ClInclude Include="commands\xml\xml_children_command.h" />
     <ClInclude Include="commands\xml\xml_child_command.h" />
+    <ClInclude Include="commands\xml\xml_delete_command.h" />
     <ClInclude Include="commands\xml\xml_select_command.h" />
     <ClInclude Include="commands\xml\xml_set_command.h" />
     <ClInclude Include="commands\xml\xml_text_command.h" />
