@@ -27,7 +27,7 @@ namespace XmlParser {
 		ElementNode* element = new ElementNode(tag);
 
 		for (int i = 0; i < args.getSize(); i++) {
-			element->addAttribute(parseAttribute(args[i]));
+			element->setAttribute(parseAttribute(args[i]));
 		}
 
 		// parse element content

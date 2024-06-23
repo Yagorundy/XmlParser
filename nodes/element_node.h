@@ -11,21 +11,24 @@ namespace XmlParser {
 		Vector<ElementNodeAttribute> attributes_;
 		Vector<Node*> children_;
 
+		void setAttribute(const ElementNodeAttribute& attribute, const int& pos);
+
 	public:
 		ElementNode(const MyString& tag);
 		~ElementNode();
 		Node* clone() const override;
 
 		const MyString& getTag() const;
-		void addAttribute(const ElementNodeAttribute& attribute);
-		void addAttribute(const MyString& name, const MyString& value);
-		void addChild(Node* child);
-		
+
 		const Vector<ElementNodeAttribute>& getAttributes() const;
-		const Vector<Node*> getChildren() const;
-		
+		MyString getAttributeValue(const MyString& name) const;
+		void setAttribute(const ElementNodeAttribute& attribute);
+
 		MyString getId() const;
 		void setId(const MyString& id);
+
+		const Vector<Node*> getChildren() const;
+		void addChild(Node* child);
 
 		void pipe(std::ostream& out, int ident) const override;
 	};

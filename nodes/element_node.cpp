@@ -74,7 +74,7 @@ namespace XmlParser {
 
 		if (children_.getSize() == 1 && dynamic_cast<TextNode*>(children_[0]) != nullptr) {
 			children_[0]->pipe(out, 0);
-			out << '<' << tag_ << "/>";
+			out << "</" << tag_ << '>';
 		}
 		else {
 			out << std::endl;
