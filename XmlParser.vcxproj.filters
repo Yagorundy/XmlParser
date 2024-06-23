@@ -87,6 +87,9 @@
     <ClCompile Include="commands\xml\xml_delete_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="commands\xml\xml_newchild.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app\app.h">
@@ -162,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="commands\xml\xml_delete_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commands\xml\xml_newchild_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

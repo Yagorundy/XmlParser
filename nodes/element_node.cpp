@@ -85,7 +85,10 @@ namespace XmlParser {
 		}
 		out << '>';
 
-		if (children_.getSize() == 1 && dynamic_cast<TextNode*>(children_[0]) != nullptr) {
+		if (children_.getSize() == 0) {
+			out << "</" << tag_ << '>';
+		}
+		else if (children_.getSize() == 1 && dynamic_cast<TextNode*>(children_[0]) != nullptr) {
 			children_[0]->pipe(out, 0);
 			out << "</" << tag_ << '>';
 		}
