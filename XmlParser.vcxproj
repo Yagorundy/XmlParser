@@ -149,6 +149,7 @@
     <ClCompile Include="commands\xml\xml_select_command.cpp" />
     <ClCompile Include="commands\xml\xml_set_command.cpp" />
     <ClCompile Include="commands\xml\xml_text_command.cpp" />
+    <ClCompile Include="commands\xml\xml_xpath_command.cpp" />
     <ClCompile Include="parsers\argument_parser.cpp" />
     <ClCompile Include="commands\command.cpp" />
     <ClCompile Include="commands\file\file_open_command.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="commands\xml\xml_select_command.h" />
     <ClInclude Include="commands\xml\xml_set_command.h" />
     <ClInclude Include="commands\xml\xml_text_command.h" />
+    <ClInclude Include="commands\xml\xml_xpath_command.h" />
     <ClInclude Include="parsers\argument_parser.h" />
     <ClInclude Include="commands\command.h" />
     <ClInclude Include="commands\file\file_open_command.h" />

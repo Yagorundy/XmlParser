@@ -30,7 +30,9 @@ namespace XmlParser {
 
 		const Vector<Node*>& getChildren() const;
 		void addChild(Node* child);
+		void dropChild(int index); // remove without freeing memory
 
+		void pipeInnerText(std::ostream& out) const;
 		void pipe(std::ostream& out, int ident) const override;
 	};
 }

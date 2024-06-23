@@ -76,6 +76,17 @@ namespace XmlParser {
 		children_.pushBack(child);
 	}
 
+	void ElementNode::dropChild(int index) {
+		children_.popAt(index);
+	}
+
+	void ElementNode::pipeInnerText(std::ostream& out) const {
+		for (int i = 0; i < children_.getSize(); i++) {
+			children_[i]->pipe(out, 0);
+			out << std::endl;
+		}
+	}
+
 	void ElementNode::pipe(std::ostream& out, int ident) const {
 		pipeIdent(out, ident);
 		out << '<' << tag_;

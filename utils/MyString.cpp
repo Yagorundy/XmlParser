@@ -200,7 +200,7 @@ void MyString::getLine(std::istream& in)
 }
 
 MyString MyString::substr(size_t begin) const {
-	return substr(begin, _size);
+	return substr(begin, _size - begin);
 }
 
 size_t MyString::find(char ch, size_t pos) const {
@@ -245,6 +245,19 @@ MyString MyString::trim() const {
 
 	return substr(start, end - start + 1);
 }
+
+Vector<MyString> MyString::split(char delim) const {
+	int l = 0, delimIndex = find(delim, l);
+	Vector<MyString> result;
+	while (delimIndex != -1) {
+		result.pushBack(substr(l, delimIndex - l));
+		l = delimIndex + 1;
+		delimIndex = find(delim, l);
+	}
+	result.pushBack(substr(l));
+	return result;
+}
+
 
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {

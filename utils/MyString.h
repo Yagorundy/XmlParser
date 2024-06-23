@@ -2,6 +2,7 @@
 
 #pragma once
 #include <iostream>
+#include "vector.hpp"
 
 class MyString
 {
@@ -41,6 +42,7 @@ public:
     MyString& operator +=(const char& ch);
     bool empty() const;
     MyString trim() const;
+    Vector<MyString> split(char delim) const;
 
 private:
     explicit MyString(size_t stringLength);
