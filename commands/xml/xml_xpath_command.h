@@ -5,6 +5,8 @@
 
 namespace XmlParser {
     class XmlXpathCommand : public Command {
+        Vector<ElementNode*> evalXpath(const Vector<MyString>& tokens, AppState& state);
+
     public:
         static const MyString kName;
 

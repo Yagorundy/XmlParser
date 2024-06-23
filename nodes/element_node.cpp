@@ -32,6 +32,15 @@ namespace XmlParser {
 		return MyString();
 	}
 
+	bool ElementNode::containsAttribute(const MyString& name) const {
+		for (int i = 0; i < attributes_.getSize(); i++) {
+			if (attributes_[i].getName() == name) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	void ElementNode::setAttribute(const ElementNodeAttribute& attribute, const int& pos) {
 		int i = 0;
 		for (; i < attributes_.getSize(); i++) {
@@ -78,6 +87,15 @@ namespace XmlParser {
 
 	void ElementNode::dropChild(int index) {
 		children_.popAt(index);
+	}
+
+	bool ElementNode::containsChildTag(const MyString& tag) const {
+		for (int i = 0; i < children_.getSize(); i++) {
+			ElementNode* child = dynamic_cast<ElementNode*>(children_[i]);
+			if (child != nullptr && child->getTag() == tag)
+				return true;
+		}
+		return false;
 	}
 
 	void ElementNode::pipeInnerText(std::ostream& out) const {

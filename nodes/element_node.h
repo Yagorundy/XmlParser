@@ -21,6 +21,7 @@ namespace XmlParser {
 		const MyString& getTag() const;
 
 		const Vector<ElementNodeAttribute>& getAttributes() const;
+		bool containsAttribute(const MyString& name) const;
 		MyString getAttributeValue(const MyString& name) const;
 		void setAttribute(const ElementNodeAttribute& attribute);
 		void removeAttribute(const const MyString& name);
@@ -31,6 +32,7 @@ namespace XmlParser {
 		const Vector<Node*>& getChildren() const;
 		void addChild(Node* child);
 		void dropChild(int index); // remove without freeing memory
+		bool containsChildTag(const MyString& tag) const;
 
 		void pipeInnerText(std::ostream& out) const;
 		void pipe(std::ostream& out, int ident) const override;
